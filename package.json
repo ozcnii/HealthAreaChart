@@ -1,0 +1,17 @@
+{
+  "name": "some-circle",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue2": "^2.3.1",
+    "vite": "^4.4.11"
+  },
+  "dependencies": {
+    "vue": "^2.7.16"
+  }
+}
