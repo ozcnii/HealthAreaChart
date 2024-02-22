@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" :style="{ transform }">
+  <div class="wrapper" :style="{ transform: transformStyles }">
     <div class="chart-svg-container">
       <svg class="chart-svg">
         <chart-triangle
@@ -63,7 +63,7 @@ export default {
   },
 
   computed: {
-    transform() {
+    transformStyles() {
       return `rotate(${this.chartAngle}deg)`;
     },
 

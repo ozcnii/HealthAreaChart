@@ -1,5 +1,10 @@
 <template>
-  <div class="item-test" :style="{ transform }" @click="$emit('click')">
+  <div
+    ref="itemCircle"
+    class="item-test"
+    :style="{ transform: transformStyles, inset: insetStyles }"
+    @click="$emit('click')"
+  >
     {{ index + 1 }}
   </div>
 </template>
@@ -19,11 +24,12 @@ export default {
   data() {
     return {
       wrapperHeight: 0,
+      itemHeight: 0,
     };
   },
 
   computed: {
-    transform() {
+    transformStyles() {
       const positionRotate =
         (360 / this.count) * this.index + CENTER_ANGLE_DEG_OFFSET;
 
@@ -33,12 +39,19 @@ export default {
           this.chartAngle +
           CENTER_ANGLE_DEG_OFFSET);
 
-      return `rotate(${positionRotate}deg) translate(calc(${this.wrapperHeight}px/2)) rotate(${selfRotate}deg)`;
+      return `rotate(${positionRotate}deg) translate(calc(${
+        this.wrapperHeight / 2
+      }px)) rotate(${selfRotate}deg)`;
+    },
+
+    insetStyles() {
+      return `${this.wrapperHeight / 2 - this.itemHeight / 2}px`;
     },
   },
 
   mounted() {
     this.wrapperHeight = this.$el?.parentNode.clientHeight;
+    this.itemHeight = this.$refs.itemCircle?.clientHeight;
   },
 };
 </script>
