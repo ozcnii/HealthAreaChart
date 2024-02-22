@@ -24,13 +24,16 @@ export default {
 
   computed: {
     transform() {
-      return `rotate(${
-        (360 / this.count) * this.index + CENTER_ANGLE_DEG_OFFSET
-      }deg) translate(calc(${this.wrapperHeight}px/2)) rotate(-${Math.abs(
-        (360 / this.count) * this.index +
+      const positionRotate =
+        (360 / this.count) * this.index + CENTER_ANGLE_DEG_OFFSET;
+
+      const selfRotate =
+        360 -
+        ((360 / this.count) * this.index +
           this.chartAngle +
-          CENTER_ANGLE_DEG_OFFSET
-      )}deg)`;
+          CENTER_ANGLE_DEG_OFFSET);
+
+      return `rotate(${positionRotate}deg) translate(calc(${this.wrapperHeight}px/2)) rotate(${selfRotate}deg)`;
     },
   },
 
