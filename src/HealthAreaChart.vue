@@ -18,12 +18,20 @@
 
     <item-circle
       @click="activateTriangleHandler(index)"
-      v-for="(_, index) in items"
-      :key="index"
+      v-for="(item, index) in items"
+      :key="item.id"
       :index="index"
       :count="items.length"
       :chartAngle="chartAngle"
-    />
+    >
+      <div class="item-circle-content-wrapper">
+        <img class="item-circle-icon" :src="item.iconPath" />
+
+        <div v-if="item.haveWarning" class="item-circle-warning">
+          <img src="/icons/warning.svg" />
+        </div>
+      </div>
+    </item-circle>
   </div>
 </template>
 
@@ -46,18 +54,93 @@ export default {
       activeTriangleIndex: -1,
 
       items: [
-        { id: 1, value: 100 },
-        { id: 2, value: 100 },
-        { id: 3, value: 80 },
-        { id: 4, value: 60 },
-        { id: 5, value: 100 },
-        { id: 6, value: 80 },
-        { id: 7, value: 40 },
-        { id: 8, value: 60 },
-        { id: 9, value: 40 },
-        { id: 10, value: 80 },
-        { id: 11, value: 60 },
-        { id: 12, value: 80 },
+        {
+          id: 1,
+          value: 100,
+          title: "Эндокринная система",
+          iconPath: "/icons/endocrine.svg",
+          haveWarning: false,
+        },
+        {
+          id: 2,
+          value: 100,
+          title: "Репродуктивная система",
+          iconPath: "/icons/reproductive.svg",
+          haveWarning: false,
+        },
+        {
+          id: 3,
+          value: 80,
+          title: "Мочевыделительная система",
+          iconPath: "/icons/urinary.svg",
+          haveWarning: false,
+        },
+        {
+          id: 4,
+          value: 60,
+          title: "Пищеварительная система",
+          iconPath: "/icons/digestion.svg",
+          haveWarning: false,
+        },
+        {
+          id: 5,
+          value: 100,
+          title: "Дыхательная система",
+          iconPath: "/icons/lungs.svg",
+          haveWarning: false,
+        },
+
+        {
+          id: 6,
+          value: 80,
+          title: "Опорно-двигательная система",
+          iconPath: "/icons/musculoskeletal.svg",
+          haveWarning: false,
+        },
+        {
+          id: 7,
+          value: 40,
+          title: "Кроветворная и иуммунная система",
+          iconPath: "/icons/immune.svg",
+          haveWarning: true,
+        },
+        {
+          id: 8,
+          value: 60,
+          title: "Лимфатическая система",
+          iconPath: "/icons/lymphatic.svg",
+          haveWarning: false,
+        },
+
+        {
+          id: 9,
+          value: 40,
+          title: "Сердечно-сосудистая система",
+          iconPath: "/icons/cardiovascular.svg",
+          haveWarning: true,
+        },
+
+        {
+          id: 10,
+          value: 80,
+          title: "Покровная система",
+          iconPath: "/icons/integumentary.svg",
+          haveWarning: false,
+        },
+        {
+          id: 11,
+          value: 60,
+          title: "Нервная система",
+          iconPath: "/icons/nervous.svg",
+          haveWarning: false,
+        },
+        {
+          id: 12,
+          value: 80,
+          title: "Система органов чувств",
+          iconPath: "/icons/sense-organs.svg",
+          haveWarning: false,
+        },
       ],
     };
   },
@@ -117,5 +200,43 @@ export default {
 .chart-svg {
   height: 100%;
   width: 100%;
+}
+
+.item-circle-content-wrapper {
+  position: relative;
+}
+
+.item-circle-content-wrapper:hover {
+  opacity: 0.7;
+}
+
+.item-circle-warning {
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+
+  height: 25px;
+  width: 25px;
+
+  background-color: #ff5300;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.item-circle-warning > img {
+  height: 100%;
+  width: 100%;
+  padding: 6px;
+}
+
+.item-circle-icon {
+  height: 100%;
+  width: 100%;
+  padding: 8px;
 }
 </style>

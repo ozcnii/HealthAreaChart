@@ -1,11 +1,11 @@
 <template>
   <div
     ref="itemCircle"
-    class="item-test"
+    class="item-circle"
     :style="{ transform: transformStyles, inset: insetStyles }"
     @click="$emit('click')"
   >
-    {{ index + 1 }}
+    <slot />
   </div>
 </template>
 
@@ -57,17 +57,18 @@ export default {
 </script>
 
 <style scoped>
-.item-test {
+.item-circle {
   width: 45px; /* TODO: on small screen =45  */
-  /* width: 45px; */
   height: 45px;
-  background-color: red;
-  position: absolute;
 
-  background-color: #3498db;
+  position: absolute;
+  background-color: #f8f9fd;
   color: white;
-  text-align: center;
-  line-height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border-radius: 50%;
   position: absolute;
   inset: 162.5px; /* TODO: wrapper.height/2 - item.height/2 */
